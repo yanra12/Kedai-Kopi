@@ -18,7 +18,6 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  /* <--- Ubah baris ini */
   background-color: var(--bg);
   color: #fff;
 }
@@ -66,26 +65,18 @@ body {
   display: block;
   padding-bottom: 0.5rem;
   border-bottom: 0.1rem solid var(--primary);
-  /* Tambahkan transform di dalam sini */
   transform: scaleX(0);
-  /* (Opsional) Tambahkan transition agar animasi garisnya halus saat muncul */
   transition: 0.2s linear;
 }
-
-/* Tambahkan blok baru ini untuk memunculkan garis saat menu di-hover */
 
 .navbar .navbar-nav a:hover::after {
   transform: scaleX(0.5);
 }
 
-/* Mengatur warna link dan memastikan warna icon mengikuti teks */
-
 .navbar .navbar-extra a {
   color: #fff;
   margin: 0 0.5rem;
 }
-
-/* (Opsional) Efek hover agar icon berubah warna saat disentuh mouse */
 
 .navbar .navbar-extra a:hover {
   color: var(--primary);
@@ -228,11 +219,14 @@ body {
   flex-wrap: wrap;
   margin-top: 5rem;
   justify-content: center;
+  gap: 2rem;
 }
 
 .menu .row .menu-card {
   text-align: center;
   padding-bottom: 3.5rem;
+  flex: 1 1 20rem;
+  max-width: 25rem;
 }
 
 .menu .row .menu-card img {
@@ -241,7 +235,22 @@ body {
 }
 
 .menu .row .menu-card .menu-card-tittle {
-  margin-top: 1rem auto 0.5rem;
+  margin-top: 1rem;
+}
+
+.add-to-cart-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.5rem;
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #966f47;
 }
 
 /* Contact Section */
@@ -275,7 +284,7 @@ body {
 }
 
 .contact .row form .input-grup input {
-  width: 100;
+  width: 100%;
   padding: 2rem;
   font-size: 1.7rem;
   background: none;
@@ -301,18 +310,19 @@ footer {
   margin-top: 3rem;
 }
 
-footer .sosials {
+footer .socials {
   padding: 1rem 0;
 }
 
-footer .sosials a {
-  color: #fff;
-  margin: 1rem;
+footer .socials a {
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin: 0 1rem;
+  transition: color 0.3s ease;
 }
 
-footer .sosials a:hover,
-footer .links a:hover {
-  color: var(--bg);
+footer .socials a:hover {
+  color: #000000;
 }
 
 footer .links {
@@ -324,6 +334,10 @@ footer .links a {
   padding: 0.7rem 1rem;
 }
 
+footer .links a:hover {
+  color: var(--bg);
+}
+
 footer .credit {
   font-size: 0.8rem;
 }
@@ -333,15 +347,134 @@ footer .credit a {
   font-weight: 600;
 }
 
-/* Media Querise */
+/* Shopping Cart Sidebar */
 
-/* Laptop */
-
-@media (max-width: 1366px) {
-  html {
-    font-size: 75%;
-  }
+.shopping-cart {
+  position: fixed;
+  top: 100%;
+  right: -100%;
+  height: calc(100vh - 6rem);
+  width: 35rem;
+  max-width: 90vw;
+  padding: 2rem;
+  background-color: #fff;
+  color: var(--bg);
+  transition: 0.4s ease;
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px 5px 15px rgba(0, 0, 0, 0.5);
 }
+
+.shopping-cart.active {
+  right: 0;
+  top: 6rem;
+}
+
+.shopping-cart h3 {
+  font-size: 2rem;
+  color: var(--bg);
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.empty-cart {
+  font-size: 1.2rem;
+  color: #777;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.cart-item-detail h4 {
+  font-size: 1.4rem;
+  color: var(--bg);
+}
+
+.cart-item-detail .cart-item-price {
+  font-size: 1.2rem;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.cart-item-amount {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.cart-item-amount button {
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 3px;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.remove-item-btn {
+  margin-left: auto;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 1.8rem;
+  background: none;
+}
+
+.cart-footer {
+  border-top: 2px solid #eee;
+  padding-top: 1.5rem;
+}
+
+.total-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: var(--bg);
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: #25d366;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+}
+
+.checkout-btn:hover {
+  background-color: #1eb857;
+}
+
+/* Media Queries */
 
 /* Tablet */
 
@@ -366,9 +499,7 @@ footer .credit a {
   }
   .navbar .navbar-nav a {
     color: var(--bg);
-    /* Mengubah teks jadi hitam */
     display: block;
-    /* Ini yang membuat teksnya berbaris ke bawah */
     margin: 1.5rem;
     padding: 0.5rem;
     font-size: 2rem;
@@ -411,7 +542,7 @@ footer .credit a {
   }
 }
 
-/* Moblie Phone */
+/* Mobile Phone */
 
 @media (max-width: 450px) {
   html {

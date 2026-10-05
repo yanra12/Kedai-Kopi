@@ -8,7 +8,6 @@
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Ganti link Roboto sebelumnya dengan link Poppins ini -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"
       rel="stylesheet"
@@ -17,13 +16,18 @@
     <!--Feather icons-->
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <!--My style-->
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
+    <!--My style-->
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
-    <!--navbar star-->
+    <!--navbar start-->
     <nav class="navbar">
       <a href="#" class="navbar-logo">Kualitatif<span>coffee</span></a>
 
@@ -40,8 +44,25 @@
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
       </div>
     </nav>
-
     <!--navbar end-->
+
+    <!-- Shopping Cart Sidebar Start -->
+    <div class="shopping-cart">
+      <h3>Keranjang Belanja</h3>
+      <div class="cart-items" id="cart-items-container">
+        <p class="empty-cart">Keranjang masih kosong</p>
+      </div>
+      <div class="cart-footer">
+        <div class="total-container">
+          <span>Total:</span>
+          <span id="cart-total">IDR 0</span>
+        </div>
+        <button id="checkout-wa-btn" class="checkout-btn">
+          Pesan via WhatsApp
+        </button>
+      </div>
+    </div>
+    <!-- Shopping Cart Sidebar End -->
 
     <!-- hero section start -->
     <section class="hero" id="home">
@@ -51,10 +72,9 @@
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Accudantium,
           enim.
         </p>
-        <a href="#" class="cta">Beli Sekarang</a>
+        <a href="#menu" class="cta">Beli Sekarang</a>
       </main>
     </section>
-
     <!-- hero section end -->
 
     <!-- about section start -->
@@ -79,7 +99,6 @@
         </div>
       </div>
     </section>
-
     <!-- about section end -->
 
     <!-- Menu section start-->
@@ -95,41 +114,93 @@
           <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img" />
           <h3 class="menu-card-tittle">- Espresso -</h3>
           <p class="menu-card-price">IDR 18K</p>
+          <button
+            class="add-to-cart-btn"
+            onclick="addToCart('Espresso', 18000, 'img/menu/1.jpg')"
+          >
+            + Keranjang
+          </button>
         </div>
         <div class="menu-card">
-          <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img" />
-          <h3 class="menu-card-tittle">- Espresso -</h3>
-          <p class="menu-card-price">IDR 18K</p>
+          <img src="img/menu/1.jpg" alt="Americano" class="menu-card-img" />
+          <h3 class="menu-card-tittle">- Americano -</h3>
+          <p class="menu-card-price">IDR 20K</p>
+          <button
+            class="add-to-cart-btn"
+            onclick="addToCart('Americano', 20000, 'img/menu/1.jpg')"
+          >
+            + Keranjang
+          </button>
         </div>
         <div class="menu-card">
-          <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img" />
-          <h3 class="menu-card-tittle">- Espresso -</h3>
-          <p class="menu-card-price">IDR 18K</p>
+          <img src="img/menu/1.jpg" alt="Cappuccino" class="menu-card-img" />
+          <h3 class="menu-card-tittle">- Cappuccino -</h3>
+          <p class="menu-card-price">IDR 22K</p>
+          <button
+            class="add-to-cart-btn"
+            onclick="addToCart('Cappuccino', 22000, 'img/menu/1.jpg')"
+          >
+            + Keranjang
+          </button>
         </div>
         <div class="menu-card">
-          <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img" />
-          <h3 class="menu-card-tittle">- Espresso -</h3>
-          <p class="menu-card-price">IDR 18K</p>
+          <img src="img/menu/1.jpg" alt="Latte" class="menu-card-img" />
+          <h3 class="menu-card-tittle">- Latte -</h3>
+          <p class="menu-card-price">IDR 24K</p>
+          <button
+            class="add-to-cart-btn"
+            onclick="addToCart('Latte', 24000, 'img/menu/1.jpg')"
+          >
+            + Keranjang
+          </button>
         </div>
         <div class="menu-card">
-          <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img" />
-          <h3 class="menu-card-tittle">- Espresso -</h3>
-          <p class="menu-card-price">IDR 18K</p>
+          <img
+            src="img/menu/1.jpg"
+            alt="Kopi Gula Aren"
+            class="menu-card-img"
+          />
+          <h3 class="menu-card-tittle">- Kopi Gula Aren -</h3>
+          <p class="menu-card-price">IDR 20K</p>
+          <button
+            class="add-to-cart-btn"
+            onclick="addToCart('Kopi Gula Aren', 20000, 'img/menu/1.jpg')"
+          >
+            + Keranjang
+          </button>
         </div>
         <div class="menu-card">
-          <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img" />
-          <h3 class="menu-card-tittle">- Espresso -</h3>
-          <p class="menu-card-price">IDR 18K</p>
+          <img src="img/menu/1.jpg" alt="Matcha Latte" class="menu-card-img" />
+          <h3 class="menu-card-tittle">- Matcha Latte -</h3>
+          <p class="menu-card-price">IDR 25K</p>
+          <button
+            class="add-to-cart-btn"
+            onclick="addToCart('Matcha Latte', 25000, 'img/menu/1.jpg')"
+          >
+            + Keranjang
+          </button>
         </div>
         <div class="menu-card">
-          <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img" />
-          <h3 class="menu-card-tittle">- Espresso -</h3>
-          <p class="menu-card-price">IDR 18K</p>
+          <img src="img/menu/1.jpg" alt="Chocolate" class="menu-card-img" />
+          <h3 class="menu-card-tittle">- Chocolate -</h3>
+          <p class="menu-card-price">IDR 22K</p>
+          <button
+            class="add-to-cart-btn"
+            onclick="addToCart('Chocolate', 22000, 'img/menu/1.jpg')"
+          >
+            + Keranjang
+          </button>
         </div>
         <div class="menu-card">
-          <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img" />
-          <h3 class="menu-card-tittle">- Espresso -</h3>
-          <p class="menu-card-price">IDR 18K</p>
+          <img src="img/menu/1.jpg" alt="Croissant" class="menu-card-img" />
+          <h3 class="menu-card-tittle">- Croissant -</h3>
+          <p class="menu-card-price">IDR 15K</p>
+          <button
+            class="add-to-cart-btn"
+            onclick="addToCart('Croissant', 15000, 'img/menu/1.jpg')"
+          >
+            + Keranjang
+          </button>
         </div>
       </div>
     </section>
@@ -172,10 +243,18 @@
 
     <!--footer start-->
     <footer>
-      <div class="sosials">
-        <a href="#"><i data-feather="instagram"></i></a>
-        <a href="#"><i data-feather="twitter"></i></a>
-        <a href="#"><i data-feather="facebook"></i></a>
+      <div class="socials">
+        <a href="https://instagram.com/4bayy12_" target="_blank"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a href="https://tiktok.com/@yanradeamaulana" target="_blank"
+          ><i class="fa-brands fa-tiktok"></i
+        ></a>
+        <a
+          href="https://wa.me/6285814187067?text=Halo,%20saya%20mau%20pesan%20kopi"
+          target="_blank"
+          ><i class="fa-brands fa-whatsapp"></i
+        ></a>
       </div>
 
       <div class="links">
@@ -186,7 +265,7 @@
       </div>
 
       <div class="credit">
-        <p>Criated by <a href="">Yanra Dea Maulana</a>. | &copy; 2026.</p>
+        <p>Created by <a href="#">Yanra Dea Maulana</a>. | &copy; 2026.</p>
       </div>
     </footer>
     <!--footer end-->
